@@ -8,4 +8,9 @@ const userSchema=new mongoose.Schema({
     arr_orders:[orderShcema]
 })
 
+const User=mongoose.model("users",userSchema)
+module.exports={
+    userSchema,
+    User
+}
 
