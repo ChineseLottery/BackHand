@@ -7,5 +7,4 @@ const orderShcema=new mongoose.Schema({
     item_name:String,
     item_descreption:String,
     price:Double
-
 })
