@@ -1,6 +1,6 @@
 const User = require("../models/user").User;
 
-const addUser = async (req, res) => {
+module.exports.addUser = async (req, res) => {
     try {
         let u = new User(req.body)
         await u.save();
@@ -11,7 +11,7 @@ const addUser = async (req, res) => {
     }
 }
 
-const findOrdersByUserId = async (req, res) => {
+module.exports.findOrdersByUserId = async (req, res) => {
     let userId = req.params._id
     try {
         let orders = await User.findById(userId).arr_orders
@@ -22,7 +22,7 @@ const findOrdersByUserId = async (req, res) => {
     }
 }
 
-const addOrder = async (req, res) => {
+module.exports.addOrder = async (req, res) => {
     let user = req.params.user
     let order=user.arr_order[0]
     try {
@@ -30,11 +30,11 @@ const addOrder = async (req, res) => {
         if (userId)
             user.arr_orders.push(order)
         else
-            let newUser = new User()
-            newUser=user;
+            addUser(req, res)
     }
     catch(error) {
         return res.status(400).send(error)
     }
 
 }
+
