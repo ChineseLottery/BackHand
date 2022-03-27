@@ -23,13 +23,15 @@ const findOrdersByUserId = async (req, res) => {
 }
 
 const addOrder = async (req, res) => {
-    let userId = req.params._id
+    let user = req.params.user
+    let order=user.arr_order[0]
     try {
-        let user = await User.findById(userId)
-        if (user)
-            user.arr_orders.push(req.params.order)
+        let userId = await User.findById(user._id)
+        if (userId)
+            user.arr_orders.push(order)
         else
             let newUser = new User()
+            newUser=user;
     }
     catch(error) {
         return res.status(400).send(error)
