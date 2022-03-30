@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 
 const orderShcema = new mongoose.Schema({
-    id: Number,
     item_id: Number,
     item_name: String,
     item_descreption: String,
@@ -13,7 +12,7 @@ const userSchema = new mongoose.Schema({
     // _id:Number,
     user_first_name: String,
     user_last_name: String,
-    user_phone: { type: String, match: /[0-9]{9-11}/ },
+    user_phone: { type: String },
     arr_orders: [orderShcema]
 })
 

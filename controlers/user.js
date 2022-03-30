@@ -24,17 +24,16 @@ module.exports.findOrdersByUserId = async (req, res) => {
 
 module.exports.addOrder = async (req, res) => {
     let user = req.params.user
-    let order=user.arr_order[0]
+    let order = req.params.arr_order[0]
     try {
         let userId = await User.findById(user._id)
         if (userId)
-            user.arr_orders.push(order)
+            req.params.arr_orders.push(order)
         else
             addUser(req, res)
     }
-    catch(error) {
+    catch (error) {
         return res.status(400).send(error)
     }
-
 }
 
