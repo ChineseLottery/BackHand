@@ -1,4 +1,4 @@
-const Item=require("../Models/item").Item;
+const Item=require("../models/item").Item;
 
 const GetAllItems=async(req,res)=>{
     try{
