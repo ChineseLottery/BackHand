@@ -4,3 +4,7 @@ const WiningSchema=new mongoose.Schema({
     itemId:Number,
     winningDate:{type:Date,default:Date.now()}
 })
+const Winings=mongoose.model("Winings",WiningSchema);
+module.exports={
+    WiningSchema,Winings
+}
